@@ -39,7 +39,7 @@ struct ListingDetailView: View {
             
             //Host info view
             HStack {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 4) {
                     Text("Wikum villa hosted by John Smith")
                         .font(.headline)
                         .frame(width: 250, alignment: .leading)
@@ -52,14 +52,41 @@ struct ListingDetailView: View {
                     }
                     .font(.caption)
                 }
+                .frame(width: 300, alignment: .leading)
                 
                 Spacer()
                 
-                Image("")
+                Image("profile_picture")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 64, height: 64)
+                    .clipShape(Circle())
             }
+            .padding()
+            
+            Divider()
+            
+            //Listing features
+            VStack(alignment: .leading, spacing: 16) {
+                ForEach(0 ..< 2) { feature in
+                    HStack(spacing: 12) {
+                        Image(systemName: "medal")
+                        
+                        VStack(alignment: .leading) {
+                            Text("Superhost")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                            
+                            Text("Superhost are expensive and highly relatively experienced comitted to provide a great stars of guests")
+                                .font(.caption)
+                                .foregroundStyle(.gray)
+                        }
+                        
+                        Spacer()
+                    }
+                }
+            }
+            .padding()
         }
     }
 }
